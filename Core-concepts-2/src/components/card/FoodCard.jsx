@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import CartButtons from '../buttons/CartButtons';
 
 const FoodCard = ({food}) => {
     const {title, foodImg, price, category, id} = food;
@@ -12,7 +13,8 @@ const FoodCard = ({food}) => {
                 <p className="text-sm text-gray-500">{category}</p>
                 <p className="text-xl font-bold mt-2">{price}৳</p>
                 <div className="flex justify-between gap-3 mt-4">
-                <button className="btn">Add to Cart</button>
+                {/* <button className="btn">Add to Cart</button> */}
+                <CartButtons></CartButtons>
                 <Link
                 href={`/foods/${id}`}
                 className="btn"

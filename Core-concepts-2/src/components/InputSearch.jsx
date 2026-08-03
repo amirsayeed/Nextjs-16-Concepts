@@ -18,7 +18,7 @@ const handleSubmit = (e) => {
     <div>
       <form onSubmit = {handleSubmit}>
         <input name="search" type="text"
-        className='px-1 py-3 border-2 w-2xl' 
+        className='px-1 py-3 border-2 w-3xs md:w-lg lg:w-2xl' 
         placeholder="Enter Food Name" />
         <button type="submit" className='bg-blue-500 text-white px-1 py-3 rounded'>Search</button>
       </form>
