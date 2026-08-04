@@ -1,7 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import CartProvider from "@/context/CartProvider";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
-  title: "Yantun Khaijan",
+  title: {
+    default: "Yantun Khaijan",
+    template: "%s | Yantun Khaijan",
+  },
   description: "Best Fast Food Restaurant in Khulna",
 };
 
@@ -22,13 +31,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`{poppins.className} h-full antialiased`}
     >
       
       <body className="">
         <header className="px-5 py-2 flex items-center justify-between gap-5 bg-stone-500">
           <Link href="/">
-            <img src="/logo.png" alt="Logo" className="w-[120px]" />
+            <Image src="/logo.png" alt="Logo" className="w-[120px]" width={120} height={30} />
           </Link>
           <div className="space-x-5">
             <Link  className="btn" href="/categories">Categories</Link>

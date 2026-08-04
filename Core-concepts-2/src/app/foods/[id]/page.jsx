@@ -1,7 +1,17 @@
+import Image from 'next/image';
 import React from 'react';
 
 export function generateStaticParams() {
   return [{ id: '53009' }, { id: '52781' }, { id: '52899' }]
+}
+
+export async function generateMetadata({params}){
+  const {id} = await params;
+  const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`);
+  const {details={}} = await res.json();
+  return {
+    title: details.title,
+  };
 }
 
 const getSingleFood = async(id) =>{
@@ -19,10 +29,17 @@ const FoodDetailsPage = async ({ params }) => {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Food Image */}
           <div>
-            <img
+            {/* <img
               src={food.foodImg}
               alt={food.title}
               className="w-full rounded-xl shadow-lg"
+            /> */}
+            <Image
+              src={food.foodImg}
+              alt={food.title}
+              className="w-full rounded-xl shadow-lg"
+              width={300}
+              height={150}
             />
           </div>
   
