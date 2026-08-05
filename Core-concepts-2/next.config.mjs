@@ -10,8 +10,6 @@ const nextConfig = {
         port: '',
         pathname: '/images/media/**',
       },
-    ],
-    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'randomuser.me',
