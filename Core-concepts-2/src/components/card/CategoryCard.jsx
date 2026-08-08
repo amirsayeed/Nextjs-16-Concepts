@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const CategoryCard = ({ category }) => {
@@ -7,10 +8,12 @@ const CategoryCard = ({ category }) => {
       <Link href={`/categories/${id}`}>
         <div className="group cursor-pointer overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
         <div className="bg-gray-100 p-4">
-          <img
+          <Image
             src={categoryImg}
             alt={categoryName}
             className="mx-auto h-32 w-32 object-contain transition-transform duration-300 group-hover:scale-110"
+            width={128}
+            height={128}
           />
         </div>
   

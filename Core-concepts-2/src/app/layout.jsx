@@ -43,6 +43,7 @@ export default function RootLayout({ children }) {
             <Link  className="btn" href="/categories">Categories</Link>
             <Link  className="btn" href="/foods">Foods</Link>
             <Link className="btn" href="/reviews">Reviews</Link>
+            <Link className="btn" href="/feedbacks">Feedbacks</Link>
           </div>
         </header>
         
