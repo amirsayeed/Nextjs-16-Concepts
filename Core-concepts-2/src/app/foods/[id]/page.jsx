@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 export function generateStaticParams() {
@@ -22,8 +23,19 @@ const getSingleFood = async(id) =>{
 
 const FoodDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const food = await getSingleFood(id);
-  
+    const food = await getSingleFood(id);   
+
+    if(!food.title){
+      redirect("/foods");
+      // return (
+      //   <div className="text-center py-20 text-xl font-semibold">
+      //   Food not found ❌
+      // </div>
+      // )
+    }
+
+    const {title, foodImg, category,area, price, video} = food || {};
+
     return (
       <div className="max-w-6xl mx-auto px-5 py-10">
         <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -35,8 +47,8 @@ const FoodDetailsPage = async ({ params }) => {
               className="w-full rounded-xl shadow-lg"
             /> */}
             <Image
-              src={food.foodImg}
-              alt={food.title}
+              src={foodImg}
+              alt={title}
               className="w-full rounded-xl shadow-lg"
               width={300}
               height={150}
@@ -46,29 +58,29 @@ const FoodDetailsPage = async ({ params }) => {
           {/* Food Details */}
           <div className="space-y-5">
             <span className="badge badge-primary badge-lg">
-              {food.category}
+              {category}
             </span>
   
-            <h1 className="text-4xl font-bold">{food.title}</h1>
+            <h1 className="text-4xl font-bold">{title}</h1>
   
             <p className="text-lg">
-              <span className="font-semibold">Cuisine:</span> {food.area}
+              <span className="font-semibold">Cuisine:</span> {area}
             </p>
   
             <p className="text-3xl font-bold text-primary">
-              ৳{food.price}
+              ৳{price}
             </p>
   
             <p className="text-gray-600">
-              Enjoy this delicious <strong>{food.title}</strong>, a{" "}
-              {food.category.toLowerCase()} dish from{" "}
-              {food.area} cuisine. Freshly prepared with quality ingredients
+              Enjoy this delicious <strong>{title}</strong>, a{" "}
+              {category} dish from{" "}
+              {area} cuisine. Freshly prepared with quality ingredients
               to give you an unforgettable dining experience.
             </p>
   
             <div className="flex gap-4">
               <a
-                href={food.video}
+                href={video}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"

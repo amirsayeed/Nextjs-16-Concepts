@@ -1,5 +1,4 @@
 import { connect } from "@/app/lib/dbConnect";
-import { feedback } from "../route";
 import { revalidatePath } from "next/cache";
 
 const feedbackCollection = connect("feedbacks");
