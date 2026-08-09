@@ -1,3 +1,4 @@
+import { getFeedback } from '@/action/server/feedback';
 import FeedbackCard from '@/components/card/FeedbackCard';
 import Link from 'next/link';
 import React from 'react';
@@ -6,19 +7,19 @@ export const metadata = {
     title: "feedback",
   };
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
-const getFeedbacks = async() =>{
-    const res = await fetch("http://localhost:3000/api/feedback",{
-      cache: "force-cache",
-      next: {revalidate: 60}
-    });
-    const data = await res.json();
-    return data;
-}
+// const getFeedbacks = async() =>{
+//     const res = await fetch(`${process.env.SERVER_URL}/api/feedback`,{
+//       cache: "force-cache",
+//       next: {revalidate: 60}
+//     });
+//     const data = await res.json();
+//     return data;
+// }
 
 const FeedbacksPage = async () => {
-    const feedbacks = await getFeedbacks();
+    const feedbacks = await getFeedback();
     return (
         <div className="">
         <h2 className="text-2xl font-bold">

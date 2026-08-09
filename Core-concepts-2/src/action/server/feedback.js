@@ -1,7 +1,7 @@
 "use server";
 import { connect } from "@/app/lib/dbConnect";
 
-export const PostFeedback = async (message) => {
+export const postFeedback = async (message) => {
     const res = await connect("feedbacks").insertOne({
         message, 
         date: new Date().toISOString()
