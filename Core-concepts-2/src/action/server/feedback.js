@@ -1,5 +1,5 @@
 "use server";
-import { connect } from "@/app/lib/dbConnect";
+import { connect } from "@/lib/dbConnect";
 
 export const postFeedback = async (message) => {
     const res = await connect("feedbacks").insertOne({
