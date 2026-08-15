@@ -2,11 +2,10 @@ import { RiNextjsLine } from "react-icons/ri";
 import { FaReact } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { SiMongodb } from "react-icons/si";
-import Link from "next/link";
-import LoginButton from "@/components/LoginButton";
 import UserCard from "@/components/UserCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import AuthButton from "@/components/AuthButton";
 
 
 export default async function Home() {
@@ -26,12 +25,8 @@ export default async function Home() {
       <div className="relative">
         <h2 className="text-5xl">NEXT AUTH</h2>
       </div>
-      <div className="flex gap-5">
-        <LoginButton>Sign In</LoginButton>
-        <Link href={"/register"} className="btn">
-          Register
-        </Link>
-      </div>
+      
+      <AuthButton></AuthButton>
       <h2 className='font-bold'>User - Client</h2>
       <div className="border-2 p-4 rounded">{JSON.stringify(session)}</div>
        
