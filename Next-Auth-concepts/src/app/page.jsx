@@ -27,7 +27,7 @@ export default async function Home() {
       </div>
       
       <AuthButton></AuthButton>
-      <h2 className='font-bold'>User - Client</h2>
+      <h2 className='font-bold'>User - Server</h2>
       <div className="border-2 p-4 rounded">{JSON.stringify(session)}</div>
        
     </div>
